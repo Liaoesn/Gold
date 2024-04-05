@@ -6,7 +6,7 @@ from flask import Flask, render_template, session
 #-----------------------
 # 匯入各個服務藍圖
 #-----------------------
-# from services.customer.app import customer_bp
+from services.product.app import product_bp
 # from services.user.app import user_bp
 # from services.user.app import user_bp, login_manager
 
@@ -34,7 +34,7 @@ def index():
 #-------------------------
 # 在主程式註冊各個服務
 # #-------------------------
-# app.register_blueprint(customer_bp, url_prefix='/customer')
+app.register_blueprint(product_bp, url_prefix='/product')
 # app.register_blueprint(user_bp, url_prefix='/user')
 # login_manager.init_app(app) 
 #-------------------------

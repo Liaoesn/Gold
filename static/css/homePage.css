@@ -35,6 +35,8 @@ main section.buttonArea a.button{
     justify-content: space-between;
     align-items: center;
     transition: 1s;
+    text-decoration: none;
+    color: black;
 }
 main section.buttonArea a.button:hover{
     box-shadow: 5px 5px 5px 5px rgba(140, 140, 140, 0.4);
