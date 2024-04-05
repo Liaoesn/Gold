@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&display=swap');
+
+main {
+    width: 80vw;
+    height: 70vh;
+    margin: 0 auto;
+}
+
+main section.login {
+    background-color: #f0e2d599;
+    width: 80%;
+    height: 45vh;
+    margin: 30px 0;
+    border-radius: 10px;
+    padding: 5% 10%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+main section.login h2 {
+    font-family: "Zhi Mang Xing", cursive;
+    font-size: 54px;
+    margin-bottom: 20px;
+}
+
+main section.login form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 80%;
+}
+main section.login form input[type="text"],
+main section.login form input[type="password"]{
+    margin: 20px 0;
+    height: 50px;
+    border-radius: 15px;
+    padding: 0 30px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border: 2px solid rgb(224, 186, 197);
+    outline: none;
+}
+
+main section.login form input:focus-visible{
+    border: 2px solid rgb(217, 224, 186);
+}
+
+main section.login form input[type="submit"]{
+    width: 120px;
+    height: 40px;
+    margin: 50px auto;
+    border-radius: 15px;
+    font-weight: 700;
+    background-color: white;
+    color: rgb(186, 186, 224);
+    border: 1px solid rgb(186, 186, 224);
+}
+
+main section.login form input[type="submit"]:hover{
+    border: none;
+    color: white;
+    background-color: rgb(186, 186, 224);
+}
