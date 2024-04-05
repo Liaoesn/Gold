@@ -1,5 +1,23 @@
+@import url('../color.css');
+
 nav{
    width: 80vw; 
    height: 10vh;
    margin: 0 auto;
+   margin-top: 20px;
+   background-color: var(--main-color);
+   border-radius: 10px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+nav h1, nav .login{
+   margin: 0 50px;
+}
+nav .login a{
+   margin: 0 10px;
+   text-decoration: none;
+   background-color: aliceblue;
+   padding: 10px 30px;
+   b
 }
