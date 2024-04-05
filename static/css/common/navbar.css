@@ -1,23 +1,40 @@
 @import url('../color.css');
+@import url('https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&display=swap');
 
-nav{
-   width: 80vw; 
+nav {
+   width: 80vw;
    height: 10vh;
    margin: 0 auto;
-   margin-top: 20px;
+   margin-top: 10vh;
    background-color: var(--main-color);
    border-radius: 10px;
    display: flex;
    align-items: center;
    justify-content: space-between;
 }
-nav h1, nav .login{
-   margin: 0 50px;
+
+nav h1,
+nav .login {
+   margin: 0 40px;
 }
-nav .login a{
+
+nav h1 {
+   font-family: "Zhi Mang Xing", cursive;
+   font-size: 24px;
+   font-weight: bold;
+
+}
+
+nav .login a {
    margin: 0 10px;
    text-decoration: none;
-   background-color: aliceblue;
-   padding: 10px 30px;
-   b
+   background-color: rgb(255, 255, 255);
+   padding: 10px 20px;
+   border-radius: 10px;
+   transition: 0.4s;
+}
+
+nav .login a:hover {
+   transition: 0.4s;
+   box-shadow: 5px 5px 2px 0px rgba(180, 180, 180, 0.3);
 }

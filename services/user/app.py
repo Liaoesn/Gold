@@ -37,9 +37,9 @@ def unauthorized():
 #---------------------------
 # 使用者登入表單
 #---------------------------
-@user_bp.route('/login/form')
+@user_bp.route('/login_form')
 def login_form():
-    return render_template('login_form.html')
+    return render_template('user/login_form.html')
 
 #--------------------------
 # 使用者登入
@@ -47,26 +47,26 @@ def login_form():
 @user_bp.route('/login', methods=['POST'])
 def user_login():
     # 取出帳號/密碼
-    empno = request.form.get('empno')
-    ext = request.form.get('ext')
+    account = request.form.get('account')
+    passWord = request.form.get('passWord')
     
     # 建立資料庫連線
     conn = db.get_connection()
     
     # 查詢使用者
     cursor = conn.cursor()    
-    cursor.execute("SELECT empno, empname FROM employee WHERE empno = %s AND ext = %s", (empno, ext))
-    employee = cursor.fetchone()
+    cursor.execute("SELECT userName, userPW FROM users WHERE userName = %s AND userPW = %s", (account, passWord))
+    user = cursor.fetchone()
     
     # 判斷使用者是否存在
-    if employee:
-        empno, empname = employee 
-        user = User(empno)   #(登入管理)產生一個user物件  
+    if user:
+        userName = user 
+        user = User(userName)   #(登入管理)產生一個user物件  
         login_user(user)     #(登入管理)在session中保存此user物件 
-        session['username'] = empname  #將使用者姓名放入對話中
-        return render_template('login_success.html', username=empname)
+        session['account'] = userName #將使用者姓名放入對話中 
+        return render_template('/user/login_confirm.html', username=userName)
     else:
-        return render_template('login_fail.html')
+        return render_template('/login_confirm.html', username=userName)
     
 #---------------------------
 # 登出
