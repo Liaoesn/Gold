@@ -11,10 +11,29 @@
 
 <body>
     <nav class="navbar">
-        <a href="/"><h1>豪哥管金</h1></a>
+        <a href="/">
+            <h1>豪哥管金</h1>
+        </a>
         <div class="login">
-            <a href="user/login_form">LogIn</a>
-            <a href="user/login/create">SignIn</a>
+            {% if session['account'] %}
+                <a>Welcome {{ session['account'][0] }} Permissions is  
+                    {% if session['account'][2] == 'a'%}
+                        Manager
+                    {% elif session['account'][2] == 'b'%}
+                        Seller
+                    {% else %}
+                        Normal
+                    {% endif %}
+                </a>
+                <a href="logout">LogOut</a>
+            {% elif request.path == '/user/logout' %}
+                <script>alert('成功登出')</script>
+                <a href="login_form">LogIn</a>
+                <a href="create">SignIn</a>
+            {% else %}
+                <a href="user/login_form">LogIn</a>
+                <a href="user/create">SignIn</a>
+            {% endif %}
         </div>
     </nav>
     <main>
@@ -23,21 +42,36 @@
             <p>Selamat datang di sistem ini. Silakan pilih fungsi berikut untuk digunakan.</p>
         </section>
         <section class="buttonArea">
-            <a class="button" href="/add">
+            <a class="button" 
+                {% if session['account'] %}
+                    href="product/list"
+                {% else %}  
+                    href="user/login_form"
+                {% endif %}>
                 <article>
                     <h3>貨物</h3>
                     <p>barang-barang</p>
                 </article>
                 <img src="/static/img/box.png">
             </a>
-            <a class="button">
+            <a class="button" 
+                {% if session['account'] %}
+                    href="product/list"
+                {% else %}  
+                    href="user/login_form"
+                {% endif %}>
                 <article>
                     <h3>訂單</h3>
                     <p>Memesan</p>
                 </article>
                 <img src="/static/img/checkout.png">
             </a>
-            <a class="button">
+            <a class="button" 
+                {% if session['account'] %}
+                    href="product/list"
+                {% else %}  
+                    href="user/login_form"
+                {% endif %}>
                 <article>
                     <h3>分期付款</h3>
                     <p>Dcicilan</p>

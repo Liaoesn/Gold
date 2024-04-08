@@ -15,20 +15,34 @@
             <h1>豪哥管金</h1>
         </a>
         <div class="login">
-            <a href="login/create">SignIn</a>
+            <a href="/login">LogIn</a>
         </div>
     </nav>
     <main>
         <section class="login">
-            <h2>LogIn</h2>
-            <form class="form" action="login" method="post">
+            <h2>SignIn</h2>
+            <form class="form" action="" onsubmit="return checkpassword()">
                 <input type="text" name="account" placeholder="UserName" />
                 <input type="password" name="passWord" placeholder="PassWord" />
-                <input type="submit" value="Confirm" />
+                <input type="password" name="checkPassWord" placeholder="CheckPassWord" />
+                <input type="submit" value="Confirm"/>
             </form>
         </section>
     </main>
 </body>
 
 </html>
+<script>
+     function checkpassword(){
+        var pw1 = document.getElementsByName('passWord')[0].value;
+        var pw2 = document.getElementsByName('checkPassWord')[0].value;
+
+        if (pw1 !== pw2) {
+            alert('输入不相符');
+            return false; // 阻止表单提交
+        } else {
+            return true; // 密码匹配，允许表单提交
+        }
+    }
+</script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/css.js/2.5.3/css.min.js"></script>

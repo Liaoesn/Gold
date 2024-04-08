@@ -24,7 +24,7 @@ try:
     cursor = connection.cursor()
 
     # 執行 SQL 查詢
-    cursor.execute("SELECT username, userPW FROM users LIMIT 1")
+    cursor.execute("SELECT username, userpw, isadmin FROM users LIMIT 1")
 
     # 檢索結果
     row = cursor.fetchone()

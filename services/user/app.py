@@ -55,16 +55,16 @@ def user_login():
     
     # 查詢使用者
     cursor = conn.cursor()    
-    cursor.execute("SELECT userName, userPW FROM users WHERE userName = %s AND userPW = %s", (account, passWord))
+    cursor.execute("SELECT userName, userPW, isadmin FROM users WHERE userName = %s AND userPW = %s", (account, passWord))
     user = cursor.fetchone()
     
     # 判斷使用者是否存在
     if user:
-        userName = user 
+        userName = user
         user = User(userName)   #(登入管理)產生一個user物件  
         login_user(user)     #(登入管理)在session中保存此user物件 
         session['account'] = userName #將使用者姓名放入對話中 
-        return render_template('/user/login_confirm.html', username=userName)
+        return render_template('/index.html', username=userName)
     else:
         return render_template('/login_confirm.html', username=userName)
     
@@ -74,6 +74,49 @@ def user_login():
 @user_bp.route('/logout', methods=['GET'])
 def logout():        
     logout_user()   #(登入管理)從session清除user物件
-    session['username'] = None  #將使用者姓名從對話清除
-    return render_template('logout.html')  
+    session['account'] = None  #將使用者姓名從對話清除
+
+    return render_template('/index.html')
+
+#---------------------------
+# 註冊
+# ---------------------------
+@user_bp.route('/create')
+def create():
+    return render_template('user/create.html')
+
+# @user_bp.route('/create', methods=['POST'])
+# def create():
+#     return render_template('/create.html')
+#     try:
+#         #取得其他參數
+#         proName = request.form.get('proName')
+#         goldPrice = request.form.get('goldPrice')
+#         sugPrice = request.form.get('sugPrice')
+#         manual = request.form.get('manual')
+#         state = request.form.get('state')
+#         createTime = request.form.get('createTime')
+
+
+#         #取得資料庫連線
+#         conn = db.get_connection()
+
+#         #將資料加入product表
+#         cursor = conn.cursor()
+#         cursor.execute("INSERT INTO Product (proName,  goldPrice, sugPrice, manual, state, createTime, photo) VALUES ( %s, %s, %s, %s, %s, %s, %s)",
+#                         (proName, goldPrice, sugPrice, manual, state, createTime, psycopg2.Binary(filename)))
+#         conn.commit()
+#         conn.close()
+
+#         # 渲染成功畫面
+#         return render_template('create_success.html')
+#     except Exception as e:
+#         #印出錯誤原因
+#         print('-'*30)
+#         print(e)
+#         print('-'*30)
+        
+#         # 渲染失敗畫面
+#         return render_template('create_fail.html')
+
 
