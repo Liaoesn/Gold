@@ -23,7 +23,7 @@ def product_list():
     
     #產生執行sql命令的物件, 再執行sql   
     cursor = connection.cursor()     
-    cursor.execute('SELECT * FROM Product order by proNo')
+    cursor.execute('SELECT * FROM product order by prono')
     
     #取出資料
     data = cursor.fetchall()    
@@ -53,9 +53,9 @@ def product_read():
     cursor = connection.cursor()   
     
     #取得傳入參數, 執行sql命令並取回資料  
-    proNo = request.values.get('proNo').strip()
+    prono = request.values.get('prono').strip()
       
-    cursor.execute('SELECT * FROM Product WHERE proNo=%s', (proNo,))
+    cursor.execute('SELECT * FROM product WHERE prono=%s', (prono,))
     data = cursor.fetchone()
 
     #關閉連線   
@@ -91,12 +91,11 @@ def product_create():
             photo.save(os.path.join('static/photos', filename))        
         
         #取得其他參數
-        proName = request.form.get('proName')
-        goldPrice = request.form.get('goldPrice')
-        sugPrice = request.form.get('sugPrice')
+        proname = request.form.get('proname')
+        goldprice = request.form.get('goldprice')
+        sugprice = request.form.get('sugprice')
         manual = request.form.get('manual')
         state = request.form.get('state')
-        createTime = request.form.get('createTime')
 
 
         #取得資料庫連線
@@ -104,8 +103,8 @@ def product_create():
 
         #將資料加入product表
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO Product (proName,  goldPrice, sugPrice, manual, state, createTime, photo) VALUES ( %s, %s, %s, %s, %s, %s, %s)",
-                        (proName, goldPrice, sugPrice, manual, state, createTime, psycopg2.Binary(filename)))
+        cursor.execute("INSERT INTO product (proname,  goldprice, sugprice, manual, state, photo) VALUES ( %s, %s, %s, %s, %s, %s)",
+                        (proname,  goldprice, sugprice, manual, state,  psycopg2.Binary(filename)))
         conn.commit()
         conn.close()
 
@@ -139,9 +138,9 @@ def product_delete_confirm():
     cursor = connection.cursor()   
     
     #取得傳入參數, 執行sql命令並取回資料  
-    proNo = request.values.get('proNo').strip().upper()
+    prono = request.values.get('prono').strip()
       
-    cursor.execute('SELECT * FROM product WHERE proNo=%s', (proNo,))
+    cursor.execute('SELECT * FROM product WHERE prono=%s', (prono,))
     data = cursor.fetchone()
 
     #關閉連線   
@@ -160,14 +159,14 @@ def product_delete_confirm():
 def product_delete():
     try:
         #取得參數
-        proNo = request.form.get('proNo').strip().upper()
+        prono = request.form.get('prono').strip().upper()
 
         #取得資料庫連線
         conn = db.get_connection()
 
         #將資料從product表刪除
         cursor = conn.cursor()
-        cursor.execute("DELETE FROM product WHERE proNo = %s", (proNo,))
+        cursor.execute("DELETE FROM product WHERE prono = %s", (prono,))
         
         conn.commit()
         conn.close()
@@ -202,9 +201,9 @@ def product_update_confirm():
     cursor = connection.cursor()   
     
     #取得傳入參數, 執行sql命令並取回資料  
-    proNo = request.values.get('proNo').strip().upper()
+    prono = request.values.get('prono').strip().upper()
       
-    cursor.execute('SELECT * FROM product WHERE proNo=%s', (proNo,))
+    cursor.execute('SELECT * FROM product WHERE prono=%s', (prono,))
     data = cursor.fetchone()
 
     #關閉連線   
@@ -223,16 +222,19 @@ def product_update_confirm():
 def product_update():
     try:
         #取得參數
-        proNo = request.form.get('proNo')
-        proName = request.form.get('proName')
-        address = request.form.get('address')
+        prono = request.form.get('prono')
+        proname = request.form.get('proname')
+        goldprice = request.form.get('goldprice')
+        sugprice = request.form.get('sugprice')
+        manual = request.form.get('manual')
+        state = request.form.get('state')
 
         #取得資料庫連線
         conn = db.get_connection()
 
         #將資料從product表刪除
         cursor = conn.cursor()
-        cursor.execute("UPDATE product SET proName=%s, address=%s WHERE proNo = %s", (proName, address, proNo))
+        cursor.execute("UPDATE product SET proname=%s, goldprice=%s, sugprice=%s, manual=%s, state=%s WHERE prono = %s", (proname, goldprice, sugprice, manual, state, prono))
         
         conn.commit()
         conn.close()
