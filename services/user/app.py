@@ -97,7 +97,7 @@ def create():
 #         #取得資料庫連線
 #         conn = db.get_connection()
 
-#         #將資料加入product表
+#         #將資料加入user表
 #         cursor = conn.cursor()
 #         cursor.execute("INSERT INTO users (username,  userpw, isadmin) VALUES ( %s, %s, %s)",(account, passWord, 'a'))
 #         conn.commit()
