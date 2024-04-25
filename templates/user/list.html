@@ -49,42 +49,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
+                    {% for d in data %}  
                     <tr>
-                        <td>小城</td>
-                        <td>2024/03/28</td>
-                        <td>管理者</td>
+                        <td>{{d[0]}}</td>
+                        <td>{{d[1]}}</td>
+                        <td>{{d[3]}}</td>
+                        <td>{{d[5]}}</td>
                         <td><button>設定</button></td>
                     </tr>
-                    <tr>
-                        <td>小城</td>
-                        <td>2024/03/28</td>
-                        <td>管理者</td>
-                        <td><button>設定</button></td>
-                    </tr>
-                    <tr>
-                        <td>小城</td>
-                        <td>2024/03/28</td>
-                        <td>管理者</td>
-                        <td><button>設定</button></td>
-                    </tr>
-                    <tr>
-                        <td>小城</td>
-                        <td>2024/03/28</td>
-                        <td>管理者</td>
-                        <td><button>設定</button></td>
-                    </tr>
-                    <tr>
-                        <td>小城</td>
-                        <td>2024/03/28</td>
-                        <td>管理者</td>
-                        <td><button>設定</button></td>
-                    </tr>
-                    <tr>
-                        <td>小城</td>
-                        <td>2024/03/28</td>
-                        <td>管理者</td>
-                        <td><button>設定</button></td>
-                    </tr>
+                    {% endfor %}                        
                 </tbody>
             </table>
         </section>

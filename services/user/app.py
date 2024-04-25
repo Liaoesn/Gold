@@ -115,3 +115,23 @@ def create():
 #         return render_template('create_fail.html')
 
 
+#---------------------------
+# 使用者表單
+# ---------------------------
+@user_bp.route('/list')
+def list():
+    #取得資料庫連線 
+    connection = db.get_connection() 
+    
+    #產生執行sql命令的物件, 再執行sql   
+    cursor = connection.cursor()     
+    cursor.execute('SELECT * FROM users order by userno')
+    
+    #取出資料
+    data = cursor.fetchall()    
+    print(data)
+    #關閉資料庫連線    
+    connection.close() 
+    
+    #渲染網頁  
+    return render_template('user/list.html', data=data)
