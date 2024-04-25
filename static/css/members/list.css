@@ -1,0 +1,56 @@
+@import url('../color.css');
+main{
+    width: 80vw;
+    height: 70vh;
+    margin: 10px auto;
+    border-radius: 20px;
+    padding: 10px 0;
+    background-color: var(--main-color);
+}
+.title h1{
+    font-size: 24px;
+    margin: 20px 50px;
+}
+.tableArea{
+    margin: 20px 50px;
+    height: 80%;
+    overflow: scroll;
+    border-radius: 10px;
+    background-color: white;
+}
+.tableArea table {
+    width: 100%;
+    border-radius: 10px;
+}
+.tableArea table tr{
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.tableArea table .head{
+    border-radius: 10px 10px 0 0;
+    border-bottom:1px solid black ;
+}
+.tableArea table tbody tr{
+    height: 10px;
+}
+.tableArea table thead tr th{
+    font-size: 18px;
+}
+.tableArea table tbody tr td{
+    font-size: 14px;
+}
+.tableArea table tbody tr td,
+.tableArea table thead tr th{
+    flex: 0.3;
+    text-align: center;
+}
+.tableArea table tbody tr:last-child{
+    border-radius: 0 0 10px 10px;
+}
+.changePage{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

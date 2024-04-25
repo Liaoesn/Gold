@@ -79,37 +79,32 @@ def logout():
     return render_template('/index.html')
 
 #---------------------------
-# 註冊
+# 註冊畫面
 # ---------------------------
 @user_bp.route('/create')
 def create():
     return render_template('user/create.html')
 
-# @user_bp.route('/create', methods=['POST'])
-# def create():
-#     return render_template('/create.html')
+# @user_bp.route('/create/signin', methods=['POST'])
+# def create_user():
 #     try:
 #         #取得其他參數
-#         proName = request.form.get('proName')
-#         goldPrice = request.form.get('goldPrice')
-#         sugPrice = request.form.get('sugPrice')
-#         manual = request.form.get('manual')
-#         state = request.form.get('state')
-#         createTime = request.form.get('createTime')
-
+#         account = request.form.get('account')
+#         passWord = request.form.get('passWord')
+#         print(account)
+#         print(passWord)
 
 #         #取得資料庫連線
 #         conn = db.get_connection()
 
 #         #將資料加入product表
 #         cursor = conn.cursor()
-#         cursor.execute("INSERT INTO Product (proName,  goldPrice, sugPrice, manual, state, createTime, photo) VALUES ( %s, %s, %s, %s, %s, %s, %s)",
-#                         (proName, goldPrice, sugPrice, manual, state, createTime, psycopg2.Binary(filename)))
+#         cursor.execute("INSERT INTO users (username,  userpw, isadmin) VALUES ( %s, %s, %s)",(account, passWord, 'a'))
 #         conn.commit()
 #         conn.close()
 
 #         # 渲染成功畫面
-#         return render_template('create_success.html')
+#         return render_template('user/login.html')
 #     except Exception as e:
 #         #印出錯誤原因
 #         print('-'*30)

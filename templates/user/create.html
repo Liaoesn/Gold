@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>黃金進銷存系統</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/global.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/global.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/user/login_form.css">
 </head>
 
@@ -21,7 +21,7 @@
     <main>
         <section class="login">
             <h2>SignIn</h2>
-            <form class="form" action="" onsubmit="return checkpassword()">
+            <form class="form" action="/user/create/signin" method="post" onsubmit="return checkpassword()">
                 <input type="text" name="account" placeholder="UserName" />
                 <input type="password" name="passWord" placeholder="PassWord" />
                 <input type="password" name="checkPassWord" placeholder="CheckPassWord" />
@@ -41,6 +41,7 @@
             alert('输入不相符');
             return false; // 阻止表单提交
         } else {
+            alert('成功新增使用者')
             return true; // 密码匹配，允许表单提交
         }
     }
