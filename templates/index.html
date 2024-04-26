@@ -78,6 +78,19 @@
                 </article>
                 <img src="/static/img/pay.png">
             </a>
+
+            <a class="button" 
+                {% if session['account'] %}
+                    href="user/list"
+                {% else %}  
+                    href="user/login_form"
+                {% endif %}>
+                <article>
+                    <h3>會員管理</h3>
+                    <p>Manajemen anggota</p>
+                </article>
+                <img src="/static/img/group-chat.png">
+            </a>
         </section>
     </main>
 </body>
