@@ -5,7 +5,7 @@ nav {
    width: 80vw;
    height: 10vh;
    margin: 0 auto;
-   margin-top: 10vh;
+   margin-top: 5vh;
    background-color: var(--main-color);
    border-radius: 10px;
    display: flex;
