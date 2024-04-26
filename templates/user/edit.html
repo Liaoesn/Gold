@@ -61,7 +61,7 @@
                             銷售
                             {% endif %}</td>
                         <td>{{d[4].strftime('%Y-%m-%d')}}</td>
-                        <td><a href="{{ url_for('user_bp.edit', user_id=d[0]) }}"><button>設定</button></a></td>
+                        <td><a href="{{ url_for('user_bp.edit', userno=d[0]) }}"><button>設定</button></a></td>
                     </tr>
                     {% endfor %}                        
                 </tbody>
@@ -71,15 +71,11 @@
             {% if page > 1 %}
             <a href="{{ url_for('user_bp.list', page=page-1) }}"><</a>
             {% endif %}
-
-            <p>{{ page }}/{{ total_pages }}</p>
-        
+            <p>{{ page }}/2</p>
             {% if page * per_page < total_data_count %}
             <a href="{{ url_for('user_bp.list', page=page+1) }}">></a>
             {% endif %}
         </div>
-
-        
         
         
     </main>

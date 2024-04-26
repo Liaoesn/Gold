@@ -121,7 +121,7 @@ def create():
 @user_bp.route('/list')
 def list():
     page = request.args.get('page', 1, type=int)
-    per_page = 8 
+    per_page = 8
 
     # 計算偏移量
     offset = (page - 1) * per_page
@@ -131,7 +131,51 @@ def list():
     cursor = connection.cursor() 
     
     cursor.execute('SELECT COUNT(*) FROM users')
-    total_data_count = cursor.fetchone()[0] 
+    total_data_count = cursor.fetchone()[0]
+
+    total_pages = (total_data_count + per_page - 1) // per_page
+
+    if page < 1:
+        page = 1
+    elif page > total_pages:
+        page = total_pages
+        
+    #產生執行sql命令的物件, 再執行sql     
+    cursor.execute('SELECT * FROM users ORDER BY userno LIMIT %s OFFSET %s', (per_page, offset))
+    
+    #取出資料
+    data = cursor.fetchall()    
+    print(data)
+    #關閉資料庫連線    
+    connection.close() 
+    
+    #渲染網頁  
+    return render_template('user/list.html', data=data, page=page, per_page=per_page, total_data_count=total_data_count,total_pages=total_pages)
+
+#---------------------------
+# 使用者設定
+# ---------------------------
+@user_bp.route('/edit')
+def edit():
+    page = request.args.get('page', 1, type=int)
+    per_page = 8     
+
+    # 計算偏移量
+    offset = (page - 1) * per_page
+
+    #取得資料庫連線 
+    connection = db.get_connection() 
+    cursor = connection.cursor() 
+    
+    cursor.execute('SELECT COUNT(*) FROM users')
+    total_data_count = cursor.fetchone()[0]
+
+    total_pages = (total_data_count + per_page - 1) // per_page
+
+    if page < 1:
+        page = 1
+    elif page > total_pages:
+        page = total_pages 
 
     #產生執行sql命令的物件, 再執行sql     
     cursor.execute('SELECT * FROM users ORDER BY userno LIMIT %s OFFSET %s', (per_page, offset))
@@ -143,5 +187,5 @@ def list():
     connection.close() 
     
     #渲染網頁  
-    return render_template('user/list.html', data=data, page=page, per_page=per_page, total_data_count=total_data_count)
+    return render_template('user/edit.html', data=data, page=page, per_page=per_page, total_data_count=total_data_count,total_pages=total_pages)
 
