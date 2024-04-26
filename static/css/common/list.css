@@ -14,7 +14,7 @@ main{
 .tableArea{
     margin: 20px 50px;
     height: 80%;
-    overflow: scroll;
+    overflow: hidden;
     border-radius: 10px;
     background-color: white;
 }
@@ -53,4 +53,7 @@ main{
     width: 100%;
     display: flex;
     justify-content: center;
+}
+.setting a img {
+    width: 20px;
 }
