@@ -43,8 +43,8 @@
                 <thead>
                     <tr class="head">
                         <th>會員姓名</th>
-                        <th>註冊日期</th>
                         <th>權限</th>
+                        <th>註冊日期</th>
                         <th>設定</th>
                     </tr>
                 </thead>
@@ -53,7 +53,6 @@
                     {% for d in data %}  
                     <tr>
                         <td>{{d[1]}}</td>
-                        <td>{{d[4].strftime('%Y-%m-%d')}}</td>
                         <td>{% if d[3] == 'a' %}
                             管理員
                             {% elif d[3] == 'b' %}
@@ -61,6 +60,7 @@
                             {% else %}
                             銷售
                             {% endif %}</td>
+                        <td>{{d[4].strftime('%Y-%m-%d')}}</td>
                         <td><button>設定</button></td>
                     </tr>
                     {% endfor %}                        
