@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>黃金進銷存系統</title>
     <link rel="stylesheet" type="text/css" href="../../static/css/global.css">
-    <link rel="stylesheet" type="text/css" href="../../static/css/members/list.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/common/list.css">
 </head>
 <body>
     <nav class="navbar">
@@ -43,8 +43,8 @@
                 <thead>
                     <tr class="head">
                         <th>會員姓名</th>
-                        <th>註冊日期</th>
                         <th>權限</th>
+                        <th>註冊日期</th>
                         <th>設定</th>
                     </tr>
                 </thead>
@@ -52,10 +52,15 @@
                     
                     {% for d in data %}  
                     <tr>
-                        <td>{{d[0]}}</td>
                         <td>{{d[1]}}</td>
-                        <td>{{d[3]}}</td>
-                        <td>{{d[5]}}</td>
+                        <td>{% if d[3] == 'a' %}
+                            管理員
+                            {% elif d[3] == 'b' %}
+                            一般
+                            {% else %}
+                            銷售
+                            {% endif %}</td>
+                        <td>{{d[4].strftime('%Y-%m-%d')}}</td>
                         <td><button>設定</button></td>
                     </tr>
                     {% endfor %}                        
@@ -63,10 +68,16 @@
             </table>
         </section>
         <div class="changePage">
-            <a><</a>
-            <p>1/2</p>
-            <a>></a>
+            {% if page > 1 %}
+            <a href="{{ url_for('user_bp.list', page=page-1) }}"><</a>
+            {% endif %}
+            <p>{{ page }}/2</p>
+            {% if page * per_page < total_data_count %}
+            <a href="{{ url_for('user_bp.list', page=page+1) }}">></a>
+            {% endif %}
         </div>
+        
+        
     </main>
 </body>
 </html>
