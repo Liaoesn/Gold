@@ -62,6 +62,7 @@
                     <tr>
                         <td>{{d[0]}}</td>
                         <td>{{d[1]}}</td>
+                        <td>{{d[2]}}</td>
                         <td>{{d[3]}}</td>
                         <td>{{d[5]}}</td>
                         <td>{{d[5]}}</td>
@@ -76,9 +77,15 @@
             </table>
         </section>
         <div class="changePage">
-            <a><</a>
-            <p>1/2</p>
-            <a>></a>
+            {% if page > 1 %}
+            <a href="{{ url_for('product_bp.list', page=page-1) }}"><</a>
+            {% endif %}
+
+            <p>{{ page }}/{{ total_pages }}</p>
+        
+            {% if page * per_page < total_data_count %}
+            <a href="{{ url_for('product_bp.list', page=page+1) }}">></a>
+            {% endif %}
         </div>
     </main>
 </body>
