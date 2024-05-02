@@ -15,13 +15,23 @@ main{
 .title h1{
     display: flex;
     font-size: 24px;
-    margin: 20px 50px;
+    margin: 0 50px;
 }
 .inputForm{
     height: 30px;
     display: flex;
     justify-content: center;
     margin: 0 30px;
+}
+.inputForm input{
+    border-radius: 10px;
+}
+.inputForm input[type='submit']{
+    background-color: white;
+}
+.inputForm input[type='submit']:active{
+    background-color: rgb(141, 197, 128);
+    color: white;
 }
 select{
     height: 30px;

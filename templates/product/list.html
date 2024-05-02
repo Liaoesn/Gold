@@ -36,7 +36,13 @@
     </nav>
     <main>
         <section class="title">
-            <h1>產品列表</h1>
+            <h1>產品管理列表</h1>
+            <form class="inputForm">
+                <input type="text" class="" placeholder="查詢產品編號">
+                <input type="text" class="" placeholder="查詢產品名稱">
+                <input type="date" class="" placeholder="查詢產品編號">
+                <input type="submit" value="search" class="Search">
+            </form>
         </section>
         <section class="tableArea">
             <table>
@@ -46,8 +52,9 @@
                         <th>產品名稱</th>
                         <th>金價</th>
                         <th>預售價</th>
+                        <th>進貨日期</th>
                         <th>狀態</th>
-                        <th>功能</th>
+                        <th>詳細/設定</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,7 +65,11 @@
                         <td>{{d[3]}}</td>
                         <td>{{d[5]}}</td>
                         <td>{{d[5]}}</td>
-                        <td class="setting"><a><img src="../../static/img/setting.png"></a></td>
+                        <td>{{d[5]}}</td>
+                        <td class="setting">
+                            <a><img src="../../static/img/search.png"></a>
+                            <a><img src="../../static/img/setting.png"></a>
+                        </td>
                     </tr>
                     {% endfor %}                        
                 </tbody>
