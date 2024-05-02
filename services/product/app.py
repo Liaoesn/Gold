@@ -18,13 +18,29 @@ product_bp = Blueprint('product_bp', __name__)
 @product_bp.route('/list')
 # @login_required
 def product_list(): 
-    #取得資料庫連線 
+    page = request.args.get('page', 1, type=int)
+    per_page = 8
+
+    # 計算偏移量
+    offset = (page - 1) * per_page
+
+     #取得資料庫連線 
     connection = db.get_connection() 
+    cursor = connection.cursor()  
     
-    #產生執行sql命令的物件, 再執行sql   
-    cursor = connection.cursor()     
     cursor.execute('SELECT * FROM product order by prono')
     
+    total_data_count = cursor.fetchone()[0]
+
+    total_pages = (total_data_count + per_page - 1) // per_page
+
+    if page < 1:
+        page = 1
+    elif page > total_pages:
+        page = total_pages
+
+    cursor.execute('SELECT * FROM product ORDER BY prono LIMIT %s OFFSET %s', (per_page, offset))
+
     #取出資料
     data = cursor.fetchall()    
     print(data)
@@ -32,7 +48,7 @@ def product_list():
     connection.close() 
     
     #渲染網頁  
-    return render_template('product_list.html', data=data)
+    return render_template('product/list.html', data=data, page=page, per_page=per_page, total_data_count=total_data_count,total_pages=total_pages)
 
 
 #產品查詢表單
