@@ -11,23 +11,29 @@ main{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
 } 
 .title h1{
     display: flex;
     font-size: 24px;
-    margin: 0 50px;
+    margin-left: 50px;
 }
 .inputForm{
     height: 30px;
     display: flex;
-    justify-content: center;
-    margin: 0 30px;
+    justify-content: flex-end;
+    margin-right: 30px;
+    width: 75%;
 }
 .inputForm input{
+    margin: 0 5px;
     border-radius: 10px;
+    width: 15%;
 }
 .inputForm input[type='submit']{
     background-color: white;
+    width: fit-content;
+    margin-right: 20px;
 }
 .inputForm input[type='submit']:active{
     background-color: rgb(141, 197, 128);
