@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黃金進銷存系統</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/global.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/common/list.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/">
+            <h1>豪哥管金</h1>
+        </a>
+        <div class="login">
+            {% if session['account'] %}
+                <a>Welcome {{ session['account'][0] }} Permissions is  
+                    {% if session['account'][2] == 'a'%}
+                        Manager
+                    {% elif session['account'][2] == 'b'%}
+                        Seller
+                    {% else %}
+                        Normal
+                    {% endif %}
+                </a>
+                <a href="logout">LogOut</a>
+            {% elif request.path == '/user/logout' %}
+                <!-- <script>alert('成功登出')</script> -->
+                <a href="login_form">LogIn</a>
+                <a href="create">SignIn</a>
+            {% else %}
+                <a href="user/login_form">LogIn</a>
+                <a href="user/create">SignIn</a>
+            {% endif %}
+        </div>
+    </nav>
+    <main>
+        <section class="title">
+            <h1>貨物分期列表</h1>
+        </section>
+        <section class="tableArea">
+            <table>
+                <thead>
+                    <tr class="head">
+                        <th>訂單編號</th>
+                        <th>產品名稱</th>
+                        <th>購買者</th>
+                        <th>實付金額/應付金額</th>
+                        <th>日期</th>
+                        <th>詳細/設定</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for d in data %}  
+                    <tr>
+                        <td>11204261</td>
+                        <td>黃金大手鐲</td>
+                        <td>jerry bin</td>
+                        <td>200,000/3,000,000</td>
+                        <td>2024/03/22</td>
+                        <td class="setting">
+                            <a><img src="../../static/img/search.png"></a>
+                            <a><img src="../../static/img/setting.png"></a>
+                        </td>
+                    </tr>
+                    {% endfor %}                        
+                </tbody>
+            </table>
+        </section>
+        <div class="changePage">
+            <a><</a>
+            <p>1/2</p>
+            <a>></a>
+        </div>
+    </main>
+</body>
+</html>
+<script src="//cdnjs.cloudflare.com/ajax/libs/css.js/2.5.3/css.min.js"></script><!DOCTYPE html>
