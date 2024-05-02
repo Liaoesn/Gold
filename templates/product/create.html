@@ -8,16 +8,41 @@
     <link rel="stylesheet" type="text/css" href="../../static/css/homePage.css">
 </head>
 <body>
-    <nav><button>登入</button><button>註冊</button></nav>
+    <nav class="navbar">
+        <a href="/">
+            <h1>VIRUS CE FENNY</h1>
+        </a>
+        <div class="login">
+            <!-- {% if session['account'] %}
+                <a>Welcome {{ session['account'][0] }} Permissions is  
+                    {% if session['account'][2] == 'a'%}
+                        Manager
+                    {% elif session['account'][2] == 'b'%}
+                        Seller
+                    {% else %}
+                        Normal
+                    {% endif %}
+                </a>
+                <a href="logout">LogOut</a>
+            {% elif request.path == '/user/logout' %}
+                <a href="login_form">LogIn</a>
+                <a href="create">SignIn</a>
+            {% else %} -->
+                <a href="user/login_form">LogIn</a>
+                <a href="user/create">SignIn</a>
+            <!-- {% endif %} -->
+        </div>
+    </nav>
     <main>
         <section>
             <h1>新增貨物</h1>
             <p>Barang baru</p>
         </section>
         <form>
-            <label for="product_name">貨物名稱(nama barang)</label><input type="text" name="product_name"/>
-            <label for="product_name">金價(harga emas)</label><input type="number`" name="product_name"/>
-            <label for="product_name">手工費(Biaya manual)</label><input type="text" name="product_name"/>
+            <label for="product_name">貨物名稱</label><input type="text" name="product_name"/>
+            <label for="product_name">金價</label><input type="number`" name="product_name"/>
+            <label for="product_name">手工費</label><input type="text" name="product_name"/>
+            <label for="product_name">建議售價</label><input type="text" name="product_name"/>
             <label for="product_name">貨物名稱</label><input type="text" name="product_name"/>
         </form>
     </main>
