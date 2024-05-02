@@ -77,9 +77,15 @@
             </table>
         </section>
         <div class="changePage">
-            <a><</a>
-            <p>1/2</p>
-            <a>></a>
+            {% if page > 1 %}
+            <a href="{{ url_for('order_bp.list', page=page-1) }}"><</a>
+            {% endif %}
+
+            <p>{{ page }}/{{ total_pages }}</p>
+        
+            {% if page * per_page < total_data_count %}
+            <a href="{{ url_for('order_bp.list', page=page+1) }}">></a>
+            {% endif %}
         </div>
     </main>
 </body>
