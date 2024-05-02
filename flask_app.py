@@ -8,6 +8,7 @@ from flask import Flask, render_template, session
 #-----------------------
 from services.product.app import product_bp
 from services.order.app import order_bp
+from services.installment.app import installment_bp
 from services.user.app import user_bp
 from services.user.app import user_bp, login_manager
 
@@ -37,6 +38,8 @@ def index():
 app.register_blueprint(product_bp, url_prefix='/product')
 app.register_blueprint(user_bp, url_prefix='/user')
 app.register_blueprint(order_bp, url_prefix='/order')
+app.register_blueprint(installment_bp, url_prefix='/installment')
+
 login_manager.init_app(app) 
 #-------------------------
 # 啟動主程式
