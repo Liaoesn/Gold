@@ -7,6 +7,7 @@ from flask import Flask, render_template, session
 # 匯入各個服務藍圖
 #-----------------------
 from services.product.app import product_bp
+from services.order.app import order_bp
 from services.user.app import user_bp
 from services.user.app import user_bp, login_manager
 
@@ -35,6 +36,7 @@ def index():
 # #-------------------------
 app.register_blueprint(product_bp, url_prefix='/product')
 app.register_blueprint(user_bp, url_prefix='/user')
+app.register_blueprint(order_bp, url_prefix='/order')
 login_manager.init_app(app) 
 #-------------------------
 # 啟動主程式

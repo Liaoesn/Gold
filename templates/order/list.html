@@ -61,11 +61,11 @@
                 <tbody>
                     {% for d in data %}  
                     <tr>
-                        <td>11204261</td>
-                        <td>黃金大手鐲</td>
-                        <td>jerry bin</td>
-                        <td>3,000,000</td>
-                        <td>2024/03/22</td>
+                        <td>{{d[0]}}</td>
+                        <td>{{d[10]}}</td>
+                        <td>{{d[1]}}</td>
+                        <td>{{d[4]}}</td>
+                        <td>{{d[9].strftime('%Y-%m-%d')}}</td>
                         <td><input type="checkbox"  onclick="return false;" checked="checked" /></td>
                         <td class="setting">
                             <a><img src="../../static/img/search.png"></a>
