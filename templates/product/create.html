@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>黃金進銷存系統</title>
     <link rel="stylesheet" type="text/css" href="../../static/css/global.css">
-    <link rel="stylesheet" type="text/css" href="../../static/css/homePage.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/common/table_form.css">
 </head>
 <body>
     <nav class="navbar">
@@ -34,16 +34,23 @@
         </div>
     </nav>
     <main>
-        <section>
-            <h1>新增貨物</h1>
+        <section class="title">
+            <h2>新增貨物</h2>
             <p>Barang baru</p>
         </section>
-        <form>
-            <label for="product_name">貨物名稱</label><input type="text" name="product_name"/>
-            <label for="product_name">金價</label><input type="number`" name="product_name"/>
-            <label for="product_name">手工費</label><input type="text" name="product_name"/>
-            <label for="product_name">建議售價</label><input type="text" name="product_name"/>
-            <label for="product_name">貨物名稱</label><input type="text" name="product_name"/>
+        <form class="table">
+            <div class="setinput"><label for="product_name">貨物名稱</label><input type="text" name="product_name"/></div>
+            <div>
+                <div class="setinput"><label for="gold_price">金價</label><input type="number`" name="gold_price"/></div>
+                <div class="setinput"><label for="manual">手工費</label><input type="text" name="manual"/></div>
+                <div class="setinput"><label for="sug_price">建議售價</label><input type="text" name="sug_price"/></div>
+                <input type="file"/>
+            </div>
+            <p class="textareaTitle">備註</p>
+            <textarea>
+
+            </textarea>
+            <input type="submit" value="Send">
         </form>
     </main>
 </body>
