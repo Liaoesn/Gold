@@ -28,7 +28,7 @@ def list():
     connection = db.get_connection() 
     cursor = connection.cursor()  
     
-    cursor.execute('SELECT installment.*, sales.soldno FROM installment INNER JOIN sales ON installment.soldno = sales.soldno order BY installment.soldno')
+    cursor.execute('SELECT COUNT(*) FROM installment')
     
     total_data_count = cursor.fetchone()[0]
 
@@ -40,10 +40,11 @@ def list():
         page = total_pages
 
     cursor.execute('''
-        SELECT installment.*, sales.soldno 
-        FROM installment 
-        INNER JOIN sales ON installment.soldno = sales.soldno 
-        order BY installment.soldno 
+        select s.soldno, s.createtime, s.soldprice, s.cosname, p.proname ,i.term , i.actually
+        from sales s
+        join product p ON s.prono = p.prono
+        join installment i on s.soldno = i.soldno 
+        ORDER BY s.soldno
         LIMIT %s OFFSET %s
     ''', (per_page, offset))
     
