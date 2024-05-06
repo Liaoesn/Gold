@@ -17,7 +17,7 @@ installment_bp = Blueprint('installment_bp', __name__)
 #產品清單
 @installment_bp.route('/list')
 # @login_required
-def installment_list(): 
+def list(): 
     page = request.args.get('page', 1, type=int)
     per_page = 8
 

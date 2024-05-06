@@ -17,7 +17,7 @@ order_bp = Blueprint('order_bp', __name__)
 #產品清單
 @order_bp.route('/list')
 # @login_required
-def order_list(): 
+def list(): 
     page = request.args.get('page', 1, type=int)
     per_page = 8
 
